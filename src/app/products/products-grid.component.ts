@@ -1,11 +1,11 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "products-table",
   templateUrl: "products-grid.component.html",
   styleUrls: [],
-  providers: []
+  providers: [],
 })
 export class ProductsGridComponent {
-
+  @Input() products: [];
 }
