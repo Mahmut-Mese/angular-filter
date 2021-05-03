@@ -114,11 +114,12 @@
     <div class="container">
         <div class="filter">
             <label for="search">Search</label>
-            <input id="search" />
+            <input id="search" #SearchInput [ngModel]="searchModel" />
         </div>
         <div class="filter">
             <label for="brands">Brands</label>
-            <select id="brands">
+
+            <select id="brands" [ngModel]="brandModel" (ngModelChange)="updateBrandModel($event)">
         <option [selected] value="all">All Brands</option>
         <option
           *ngFor="let product of productsUniqueBrands"
@@ -130,14 +131,15 @@
         </div>
         <div class="filter">
             <label for="in-stock">All</label>
-            <input type="radio" id="in-stock" name="stock" value="all" checked />
+            <input type="radio" id="in-stock" name="stock" value="all" checked [ngModel]="stockModel" (ngModelChange)="updateStockModel($event)" />
             <label for="in-stock">In stock</label>
-            <input type="radio" id="in-stock" name="stock" value="in-stock" />
+            <input type="radio" id="in-stock" name="stock" value="in-stock" [ngModel]="stockModel" (ngModelChange)="updateStockModel($event)" />
             <label for="out-of-stock">Out of stock</label>
-            <input type="radio" id="out-of-stock" name="stock" value="out-of-stock" />
+            <input type="radio" id="out-of-stock" name="stock" value="out-of-stock" [ngModel]="stockModel" (ngModelChange)="updateStockModel($event)" />
         </div>
     </div>
     <div class="container">
-        <products-table [products]="products"> </products-table>
+        <products-table [products]="products" [searchModel]="searchModel" [brandModel]="brandModel" [stockModel]="stockModel">
+        </products-table>
     </div>
 </div>
